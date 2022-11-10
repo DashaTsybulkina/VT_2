@@ -1,29 +1,32 @@
 package entity;
 
+/**
+ * Class that represents real refrigerator with its properties
+ */
 public class Refrigerator extends Appliance {
-    private double powerConsumption;
+    private String firm;
+    private double consumption;
     private double weight;
-    private double freezerCapacity;
-    private double overallCapacity;
+    private double capacity;
     private double height;
     private double width;
 
     public Refrigerator(String[] args) {
         super(Double.parseDouble(args[0]));
-        powerConsumption = Double.parseDouble(args[1]);
-        weight = Double.parseDouble(args[2]);
-        freezerCapacity = Double.parseDouble(args[3]);
-        overallCapacity = Double.parseDouble(args[4]);
+        firm = args[1];
+        consumption = Double.parseDouble(args[2]);
+        weight = Double.parseDouble(args[3]);
+        capacity = Double.parseDouble(args[4]);
         height = Double.parseDouble(args[5]);
-        weight = Double.parseDouble(args[6]);
+        width = Double.parseDouble(args[6]);
     }
 
-    public double getPowerConsumption() {
-        return powerConsumption;
+    public double getConsumption() {
+        return consumption;
     }
 
-    public void setPowerConsumption(double powerConsumption) {
-        this.powerConsumption = powerConsumption;
+    public void setConsumption(double consumption) {
+        this.consumption = consumption;
     }
 
     public double getWeight() {
@@ -34,20 +37,12 @@ public class Refrigerator extends Appliance {
         this.weight = weight;
     }
 
-    public double getFreezerCapacity() {
-        return freezerCapacity;
+    public double getCapacity() {
+        return capacity;
     }
 
-    public void setFreezerCapacity(double freezerCapacity) {
-        this.freezerCapacity = freezerCapacity;
-    }
-
-    public double getOverallCapacity() {
-        return overallCapacity;
-    }
-
-    public void setOverallCapacity(double overallCapacity) {
-        this.overallCapacity = overallCapacity;
+    public void setCapacity(double capacity) {
+        this.capacity = capacity;
     }
 
     public double getHeight() {
@@ -69,10 +64,9 @@ public class Refrigerator extends Appliance {
     @Override
     public String toString() {
         return "Refrigerator{" +
-                "powerConsumption=" + powerConsumption +
+                " consumption=" + consumption +
                 ", weight=" + weight +
-                ", freezerCapacity=" + freezerCapacity +
-                ", overallCapacity=" + overallCapacity +
+                ", capacity=" + capacity +
                 ", height=" + height +
                 ", width=" + width +
                 ", price=" + getPrice() +

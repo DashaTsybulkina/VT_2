@@ -1,0 +1,8 @@
+dao
+dao.impl
+entity
+entity.criteria
+main
+service
+service.impl
+service.validation

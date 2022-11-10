@@ -8,8 +8,19 @@ import java.io.IOException;
 import java.util.List;
 import org.xml.sax.SAXException;
 
+/**
+ * Interface for ApplianceDAO
+ */
 public interface ApplianceDAO {
-    List<Appliance> find(Criteria criteria) throws ParserConfigurationException, IOException, SAXException;
+    /**
+     *
+     * @param criteria
+     * @return all found appliances
+     * @throws ParserConfigurationException
+     * @throws IOException
+     * @throws SAXException
+     */
+    List<Appliance> findAppliance(Criteria criteria) throws ParserConfigurationException, IOException, SAXException;
 
 
 }

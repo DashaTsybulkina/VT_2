@@ -1,34 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3e7a4f71-4a28-4d68-95b8-649e4f9e49b1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/VT_2.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/appliances.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dao/ApplianceDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dao/DAOFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dao/impl/ApplianceDAOImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entity/Appliance.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entity/Laptop.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entity/Oven.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entity/Refrigerator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entity/Speakers.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entity/TabletPC.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entity/VacuumCleaner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entity/criteria/Criteria.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entity/criteria/SearchCriteria.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/ApplianceInfoPrinter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/service/ApplianceService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/service/ServiceFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/service/impl/ApplianceServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/service/validation/CriteriaValidator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/service/validation/Validator.java" afterDir="false" />
+    <list default="true" id="3e7a4f71-4a28-4d68-95b8-649e4f9e49b1" name="Changes" comment="final commit">
+      <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,9 +34,30 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "C:/Users/Admin/Downloads/VT_2/VT_2/VT_2",
     "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="main.Main" />
+      <module name="VT_2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -72,6 +67,21 @@
       <option name="presentableId" value="Default" />
       <updated>1667034768240</updated>
     </task>
+    <task id="LOCAL-00001" summary="add files">
+      <created>1667043206690</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1667043206690</updated>
+    </task>
+    <task id="LOCAL-00002" summary="final commit">
+      <created>1668094158246</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1668094158246</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -84,5 +94,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add files" />
+    <MESSAGE value="final commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="final commit" />
   </component>
 </project>
