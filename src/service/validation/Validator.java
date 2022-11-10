@@ -6,60 +6,76 @@ import entity.criteria.*;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * This class validates properties for different categories
+ */
+
 public class Validator {
+    /**
+     * Map contains pairs: name of property - validation method
+     */
     private static final Map<String, CriteriaValidator> validatorMap = new HashMap<>();
 
     static {
         validatorMap.put(SearchCriteria.Appliance.PRICE.toString(), Validator::validatePrice);
 
-        validatorMap.put(SearchCriteria.Oven.POWER_CONSUMPTION.toString(), Validator::validatePowerConsumption);
+        validatorMap.put(SearchCriteria.Oven.CONSUMPTION.toString(), Validator::validatePowerConsumption);
         validatorMap.put(SearchCriteria.Oven.WEIGHT.toString(), Validator::validateWeight);
         validatorMap.put(SearchCriteria.Oven.CAPACITY.toString(), Validator::validateCapacity);
-        validatorMap.put(SearchCriteria.Oven.DEPTH.toString(), Validator::validateDepth);
         validatorMap.put(SearchCriteria.Oven.HEIGHT.toString(), Validator::validateHeight);
         validatorMap.put(SearchCriteria.Oven.WIDTH.toString(), Validator::validateWidth);
 
-        validatorMap.put(SearchCriteria.Laptop.BATTERY_CAPACITY.toString(), Validator::validateBatteryCapacity);
-        validatorMap.put(SearchCriteria.Laptop.CPU.toString(), Validator::validateCPU);
-        validatorMap.put(SearchCriteria.Laptop.DISPLAY_INCHES.toString(), Validator::validateDisplayInches);
         validatorMap.put(SearchCriteria.Laptop.OS.toString(), Validator::validateOS);
-        validatorMap.put(SearchCriteria.Laptop.ROM_MEMORY.toString(), Validator::validateRomMemory);
-        validatorMap.put(SearchCriteria.Laptop.SYSTEM_MEMORY.toString(), Validator::validateSystemMemory);
+        validatorMap.put(SearchCriteria.Laptop.BATTERY.toString(), Validator::validateBatteryCapacity);
+        validatorMap.put(SearchCriteria.Laptop.MEMORY.toString(), Validator::validateMemory);
+        validatorMap.put(SearchCriteria.Laptop.CPU_NAME.toString(), Validator::validateCPU);
+        validatorMap.put(SearchCriteria.Laptop.SCREEN_SIZE.toString(), Validator::validateScreenSize);
 
-        validatorMap.put(SearchCriteria.Refrigerator.FREEZER_CAPACITY.toString(), Validator::validateFreezerCapacity);
-        validatorMap.put(SearchCriteria.Refrigerator.OVERALL_CAPACITY.toString(), Validator::validateOverallCapacity);
 
-        validatorMap.put(SearchCriteria.Speakers.SPEAKERS_NUMBER.toString(), Validator::validateSpeakersNumber);
-        validatorMap.put(SearchCriteria.Speakers.CORD_LENGTH.toString(), Validator::validateCordLength);
-        validatorMap.put(SearchCriteria.Speakers.FREQUENCY_RANGE.toString(), Validator::validateFrequencyRange);
+        validatorMap.put(SearchCriteria.Refrigerator.CAPACITY.toString(), Validator::validateCapacity);
 
-        validatorMap.put(SearchCriteria.TabletPC.COLOR.toString(), Validator::validateColor);
-        validatorMap.put(SearchCriteria.TabletPC.FLASH_MEMORY_CAPACITY.toString(), Validator::validateFlashMemoryCapacity);
+        validatorMap.put(SearchCriteria.Speakers.POWER.toString(), Validator::validateSpeakersPower);
+        validatorMap.put(SearchCriteria.Speakers.VOLUME.toString(), Validator::validateSpeakersVolume);
+        validatorMap.put(SearchCriteria.Speakers.FREQUENCY.toString(), Validator::validateFrequencyRange);
 
-        validatorMap.put(SearchCriteria.VacuumCleaner.BAG_TYPE.toString(), Validator::validateBagType);
+        validatorMap.put(SearchCriteria.Tablet.COLOR.toString(), Validator::validateColor);
+        validatorMap.put(SearchCriteria.Tablet.MEMORY.toString(), Validator::validateMemory);
+
+        validatorMap.put(SearchCriteria.VacuumCleaner.POWER.toString(), Validator::validatePower);
         validatorMap.put(SearchCriteria.VacuumCleaner.FILTER_TYPE.toString(), Validator::validateFilterType);
-        validatorMap.put(SearchCriteria.VacuumCleaner.CLEANING_WIDTH.toString(), Validator::validateCleaningWidth);
-        validatorMap.put(SearchCriteria.VacuumCleaner.WAND_TYPE.toString(), Validator::validateWandType);
-        validatorMap.put(SearchCriteria.VacuumCleaner.MOTOR_SPEED_REGULATION.toString(), Validator::validateMotorSpeedRegulation);
+        validatorMap.put(SearchCriteria.VacuumCleaner.CONSUMPTION.toString(), Validator::validateConsumption);
+        validatorMap.put(SearchCriteria.VacuumCleaner.WEIGHT.toString(), Validator::validateWeight);
     }
 
+    /**
+     * This method validates category of criteria
+     * @param criteria
+     * @return result of category validation (true/false)
+     */
     public static boolean criteriaValidator(Criteria criteria) {
-        if (criteria.getGroupSearchName().equals(Oven.class.getSimpleName())) {
+        if (criteria.getCategory().equals(Oven.class.getSimpleName())) {
             return validateOven(criteria.getCriteria());
-        } else if (criteria.getGroupSearchName().equals(Laptop.class.getSimpleName())) {
+        } else if (criteria.getCategory().equals(Laptop.class.getSimpleName())) {
             return validateLaptop(criteria.getCriteria());
-        } else if (criteria.getGroupSearchName().equals(Refrigerator.class.getSimpleName())) {
+        } else if (criteria.getCategory().equals(Refrigerator.class.getSimpleName())) {
             return validateRefrigerator(criteria.getCriteria());
-        } else if (criteria.getGroupSearchName().equals(TabletPC.class.getSimpleName())) {
-            return validateTabletPC(criteria.getCriteria());
-        } else if (criteria.getGroupSearchName().equals(Speakers.class.getSimpleName())) {
+        } else if (criteria.getCategory().equals(Tablet.class.getSimpleName())) {
+            return validateTablet(criteria.getCriteria());
+        } else if (criteria.getCategory().equals(Speakers.class.getSimpleName())) {
             return validateSpeakers(criteria.getCriteria());
-        } else if (criteria.getGroupSearchName().equals(VacuumCleaner.class.getSimpleName())) {
+        } else if (criteria.getCategory().equals(VacuumCleaner.class.getSimpleName())) {
             return validateVacuumCleaner(criteria.getCriteria());
         }
         return false;
     }
 
+    //стоит переписать логику
+
+    /**
+     * Oven validation
+     * @param criteria
+     * @return
+     */
     private static boolean validateOven(Map<String, Object> criteria) {
         for (String key : criteria.keySet()) {
             try {
@@ -71,6 +87,11 @@ public class Validator {
         return validateCriteria(criteria);
     }
 
+    /**
+     * Laptop validation
+     * @param criteria
+     * @return
+     */
     private static boolean validateLaptop(Map<String, Object> criteria) {
         for (String key : criteria.keySet()) {
             try {
@@ -82,6 +103,11 @@ public class Validator {
         return validateCriteria(criteria);
     }
 
+    /**
+     * Refrigerator validation
+     * @param criteria
+     * @return
+     */
     private static boolean validateRefrigerator(Map<String, Object> criteria) {
         for (String key : criteria.keySet()) {
             try {
@@ -93,6 +119,11 @@ public class Validator {
         return validateCriteria(criteria);
     }
 
+    /**
+     * Speakers validation
+     * @param criteria
+     * @return
+     */
     private static boolean validateSpeakers(Map<String, Object> criteria) {
         for (String key : criteria.keySet()) {
             try {
@@ -104,10 +135,15 @@ public class Validator {
         return validateCriteria(criteria);
     }
 
-    private static boolean validateTabletPC(Map<String, Object> criteria) {
+    /**
+     * Tablet validation
+     * @param criteria
+     * @return
+     */
+    private static boolean validateTablet(Map<String, Object> criteria) {
         for (String key : criteria.keySet()) {
             try {
-                SearchCriteria.TabletPC.valueOf(key);
+                SearchCriteria.Tablet.valueOf(key);
             } catch (IllegalArgumentException | NullPointerException e) {
                 return false;
             }
@@ -115,6 +151,11 @@ public class Validator {
         return validateCriteria(criteria);
     }
 
+    /**
+     * Cleaner validation
+     * @param criteria
+     * @return
+     */
     private static boolean validateVacuumCleaner(Map<String, Object> criteria) {
         for (String key : criteria.keySet()) {
             try {
@@ -126,6 +167,11 @@ public class Validator {
         return validateCriteria(criteria);
     }
 
+    /**
+     * Method validates needed appliance criteria and real criteria for searching
+     * @param criteria - all criteria for needed appliance
+     * @return result of validation
+     */
     private static boolean validateCriteria(Map<String, Object> criteria) {
         for (Map.Entry<String, Object> entry : criteria.entrySet()) {
             if (!validatorMap.get(entry.getKey()).isValid(entry.getValue())) {
@@ -151,9 +197,6 @@ public class Validator {
         return simpleDoubleValidate(value);
     }
 
-    private static boolean validateDepth(Object value) {
-        return simpleDoubleValidate(value);
-    }
 
     private static boolean validateHeight(Object value) {
         return simpleDoubleValidate(value);
@@ -171,31 +214,16 @@ public class Validator {
         return simpleStringValidate(value);
     }
 
-    private static boolean validateRomMemory(Object value) {
-        return simpleIntValidate(value);
-    }
-
-    private static boolean validateSystemMemory(Object value) {
-        return simpleIntValidate(value);
-    }
-
     private static boolean validateCPU(Object value) {
         return simpleStringValidate(value);
     }
 
-    private static boolean validateDisplayInches(Object value) {
+    private static boolean validateScreenSize(Object value) {
         return simpleDoubleValidate(value);
     }
 
-    private static boolean validateFreezerCapacity(Object value) {
-        return simpleDoubleValidate(value);
-    }
 
-    private static boolean validateOverallCapacity(Object value) {
-        return simpleDoubleValidate(value);
-    }
-
-    private static boolean validateSpeakersNumber(Object value) {
+    private static boolean validateSpeakersPower(Object value) {
         return simpleIntValidate(value);
     }
 
@@ -203,11 +231,11 @@ public class Validator {
         return simpleStringValidate(value);
     }
 
-    private static boolean validateCordLength(Object value) {
+    private static boolean validateSpeakersVolume(Object value) {
         return simpleDoubleValidate(value);
     }
 
-    private static boolean validateFlashMemoryCapacity(Object value) {
+    private static boolean validateMemory(Object value) {
         return simpleIntValidate(value);
     }
 
@@ -219,22 +247,21 @@ public class Validator {
         return simpleStringValidate(value);
     }
 
-    private static boolean validateBagType(Object value) {
+    private static boolean validatePower(Object value) {
         return simpleStringValidate(value);
     }
 
-    private static boolean validateWandType(Object value) {
-        return simpleStringValidate(value);
-    }
 
-    private static boolean validateMotorSpeedRegulation(Object value) {
-        return simpleIntValidate(value);
-    }
-
-    private static boolean validateCleaningWidth(Object value) {
+    private static boolean validateConsumption(Object value) {
         return simpleDoubleValidate(value);
     }
 
+
+    /**
+     * Double validation
+     * @param value
+     * @return
+     */
     private static boolean simpleDoubleValidate(Object value) {
         if (value instanceof Double) {
             return (Double) value > 0.0;
@@ -242,6 +269,11 @@ public class Validator {
         return false;
     }
 
+    /**
+     * String validation
+     * @param value
+     * @return
+     */
     private static boolean simpleStringValidate(Object value) {
         if (value instanceof String) {
             return !((String) value).isEmpty();
@@ -249,6 +281,11 @@ public class Validator {
         return false;
     }
 
+    /**
+     * Int validation
+     * @param value
+     * @return
+     */
     private static boolean simpleIntValidate(Object value) {
         if (value instanceof Integer) {
             return (Integer) value > 0;

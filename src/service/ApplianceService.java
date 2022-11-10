@@ -5,8 +5,11 @@ import entity.criteria.Criteria;
 
 import java.util.List;
 
+/**
+ * Interface of Searching Service
+ */
 public interface ApplianceService {
-    List<Appliance> find(Criteria criteria);
+    List<Appliance> findApplianceByCriteria(Criteria criteria);
 
-    Appliance findTheCheapest(Criteria criteria);
+    Appliance findCheapestAppliance(Criteria criteria);
 }

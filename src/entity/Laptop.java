@@ -1,29 +1,32 @@
 package entity;
 
+/**
+ * Class that represents real laptop with its properties
+ */
 public class Laptop  extends Appliance{
-    private double batteryCapacity;
+    private String firm;
     private String os;
-    private int romMemory;
-    private int systemMemory;
-    private String cpu;
-    private double displayInches;
+    private double battery;
+    private int memory;
+    private String CPU_NAME;
+    private double screenSize;
 
     public Laptop(String[] args) {
         super(Double.parseDouble(args[0]));
-        batteryCapacity = Double.parseDouble(args[1]);
+        firm = args[1];
         os = args[2];
-        romMemory = Integer.parseInt(args[3]);
-        systemMemory = Integer.parseInt(args[4]);
-        cpu = args[5];
-        displayInches = Double.parseDouble(args[6]);
+        battery = Double.parseDouble(args[3]);
+        memory = Integer.parseInt(args[4]);
+        CPU_NAME = args[5];
+        screenSize = Double.parseDouble(args[6]);
     }
 
-    public double getBatteryCapacity() {
-        return batteryCapacity;
+    public double getBattery() {
+        return battery;
     }
 
-    public void setBatteryCapacity(double batteryCapacity) {
-        this.batteryCapacity = batteryCapacity;
+    public void setBattery(double battery) {
+        this.battery = battery;
     }
 
     public String getOs() {
@@ -34,47 +37,39 @@ public class Laptop  extends Appliance{
         this.os = os;
     }
 
-    public int getRomMemory() {
-        return romMemory;
+    public int getMemory() {
+        return memory;
     }
 
-    public void setRomMemory(int romMemory) {
-        this.romMemory = romMemory;
+    public void setMemory(int memory) {
+        this.memory = memory;
     }
 
-    public int getSystemMemory() {
-        return systemMemory;
+    public String getCPU_NAME() {
+        return CPU_NAME;
     }
 
-    public void setSystemMemory(int systemMemory) {
-        this.systemMemory = systemMemory;
+    public void setCPU_NAME(String CPU_NAME) {
+        this.CPU_NAME = CPU_NAME;
     }
 
-    public String getCpu() {
-        return cpu;
+    public double getScreenSize() {
+        return screenSize;
     }
 
-    public void setCpu(String cpu) {
-        this.cpu = cpu;
-    }
-
-    public double getDisplayInches() {
-        return displayInches;
-    }
-
-    public void setDisplayInches(double displayInches) {
-        this.displayInches = displayInches;
+    public void setScreenSize(double screenSize) {
+        this.screenSize = screenSize;
     }
 
     @Override
     public String toString() {
         return "Laptop{" +
-                "batteryCapacity=" + batteryCapacity +
+                "firm=" + firm +
+                " battery=" + battery +
                 ", os='" + os + '\'' +
-                ", romMemory=" + romMemory +
-                ", systemMemory=" + systemMemory +
-                ", cpu='" + cpu + '\'' +
-                ", displayInches=" + displayInches +
+                ", memory=" + memory +
+                ", CPU name='" + CPU_NAME + '\'' +
+                ", screen size=" + screenSize +
                 ", price=" + getPrice() +
                 '}';
     }

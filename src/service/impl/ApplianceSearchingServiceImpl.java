@@ -12,31 +12,51 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.util.List;
 
-public class ApplianceServiceImpl implements ApplianceService {
+/**
+ * Implementation of Searching Service
+ */
+public class ApplianceSearchingServiceImpl implements ApplianceService {
 
     private final DAOFactory daoFactory = DAOFactory.getInstance();
     private final ApplianceDAO applianceDAO = daoFactory.getApplianceDAO();
 
+    /**
+     * Appliance searching
+     * @param criteria
+     * @return list of appliances or null
+     */
     @Override
-    public List<Appliance> find(Criteria criteria) {
+    public List<Appliance> findApplianceByCriteria(Criteria criteria) {
         if (!Validator.criteriaValidator(criteria)) {
             return null;
         }
+
         List<Appliance> appliances = null;
+
         try {
-            appliances = applianceDAO.find(criteria);
+            appliances = applianceDAO.findAppliance(criteria);
         } catch (ParserConfigurationException | IOException | SAXException e) {
             e.printStackTrace();
         }
+
         return appliances;
     }
 
+    /**
+     * One additional method to find the cheapest appliance
+     * @param criteria
+     * @return the cheapest aplliance or null
+     */
     @Override
-    public Appliance findTheCheapest(Criteria criteria) {
-        List<Appliance> appliances = find(criteria);
-        if (appliances == null || appliances.isEmpty()) {
+    public Appliance findCheapestAppliance(Criteria criteria) {
+        List<Appliance> appliances = findApplianceByCriteria(criteria);
+
+        if (appliances == null) {
             return null;
         }
+        if(appliances.isEmpty())
+            return null;
+
         return appliances.stream()
                 .min((a, b) -> (int) (a.getPrice() - b.getPrice()))
                 .get();

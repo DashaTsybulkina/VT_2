@@ -1,58 +1,64 @@
 package entity;
 
+/**
+ * Class that represents real speakers with its properties
+ */
 public class Speakers extends Appliance {
-    private double powerConsumption;
-    private int speakersNumber;
-    private String frequencyRange;
-    private double cordLength;
+    private String firm;
+    private double consumption;
+    private int power;
+    private double volume;
+    private int frequency;
 
     public Speakers(String[] args) {
         super(Double.parseDouble(args[0]));
-        powerConsumption = Double.parseDouble(args[1]);
-        speakersNumber = Integer.parseInt(args[2]);
-        frequencyRange = args[3];
-        cordLength = Double.parseDouble(args[4]);
+        firm = args[1];
+        consumption = Double.parseDouble(args[2]);
+        power = Integer.parseInt(args[3]);
+        frequency = Integer.parseInt(args[4]);
+        volume = Double.parseDouble(args[5]);
     }
 
-    public double getPowerConsumption() {
-        return powerConsumption;
+    public double getConsumption() {
+        return consumption;
     }
 
-    public void setPowerConsumption(double powerConsumption) {
-        this.powerConsumption = powerConsumption;
+    public void setConsumption(double consumption) {
+        this.consumption = consumption;
     }
 
-    public int getSpeakersNumber() {
-        return speakersNumber;
+    public int getPower() {
+        return power;
     }
 
-    public void setSpeakersNumber(int speakersNumber) {
-        this.speakersNumber = speakersNumber;
+    public void setPower(int power) {
+        this.power = power;
     }
 
-    public String getFrequencyRange() {
-        return frequencyRange;
+    public int getFrequency() {
+        return frequency;
     }
 
-    public void setFrequencyRange(String frequencyRange) {
-        this.frequencyRange = frequencyRange;
+    public void setFrequency(int frequency) {
+        this.frequency = frequency;
     }
 
-    public double getCordLength() {
-        return cordLength;
+    public double getVolume() {
+        return volume;
     }
 
-    public void setCordLength(double cordLength) {
-        this.cordLength = cordLength;
+    public void setVolume(double volume) {
+        this.volume = volume;
     }
 
     @Override
     public String toString() {
         return "Speakers{" +
-                "powerConsumption=" + powerConsumption +
-                ", speakersNumber=" + speakersNumber +
-                ", frequencyRange='" + frequencyRange + '\'' +
-                ", cordLength=" + cordLength +
+                "firm=" + firm +
+                " consumption=" + consumption +
+                ", power=" + power +
+                ", frequency='" + frequency + '\'' +
+                ", volume=" + volume +
                 ", price=" + getPrice() +
                 '}';
     }

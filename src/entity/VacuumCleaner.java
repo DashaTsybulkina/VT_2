@@ -1,80 +1,73 @@
 package entity;
 
+/**
+ * Class that represents real vacuum cleaner with its properties
+ */
 public class VacuumCleaner extends Appliance{
-    private double powerConsumption;
-    private String filterType;
-    private String bagType;
-    private String wandType;
-    private int motorSpeedRegulation;
-    private double cleaningWidth;
+    private double consumption;
+    private String firm;
+    private int power;
+    private double weight;
+    private String filter;
 
     public VacuumCleaner(String[] args) {
         super(Double.parseDouble(args[0]));
-        powerConsumption = Double.parseDouble(args[1]);
-        filterType = args[2];
-        bagType = args[3];
-        wandType = args[4];
-        motorSpeedRegulation = Integer.parseInt(args[5]);
-        cleaningWidth = Double.parseDouble(args[6]);
+        firm = args[1];
+        consumption = Double.parseDouble(args[2]);
+        filter = args[3];
+        power = Integer.parseInt(args[4]);
+        weight = Double.parseDouble(args[5]);
     }
 
-    public double getPowerConsumption() {
-        return powerConsumption;
+    public double getConsumption() {
+        return consumption;
     }
 
-    public void setPowerConsumption(double powerConsumption) {
-        this.powerConsumption = powerConsumption;
+    public void setConsumption(double consumption) {
+        this.consumption = consumption;
     }
 
-    public String getFilterType() {
-        return filterType;
+    public String getFilter() {
+        return filter;
     }
 
-    public void setFilterType(String filterType) {
-        this.filterType = filterType;
+    public void setFilter(String filter) {
+        this.filter = filter;
     }
 
-    public String getBagType() {
-        return bagType;
+    public String getFirm() {
+        return firm;
     }
 
-    public void setBagType(String bagType) {
-        this.bagType = bagType;
+    public void setFirm(String firm) {
+        this.firm = firm;
     }
 
-    public String getWandType() {
-        return wandType;
+    public int getPower() {
+        return power;
     }
 
-    public void setWandType(String wandType) {
-        this.wandType = wandType;
+    public void setPower(int power) {
+        this.power = power;
     }
 
-    public int getMotorSpeedRegulation() {
-        return motorSpeedRegulation;
+    public double getWeight() {
+        return weight;
     }
 
-    public void setMotorSpeedRegulation(int motorSpeedRegulation) {
-        this.motorSpeedRegulation = motorSpeedRegulation;
+    public void setWeight(double weight) {
+        this.weight = weight;
     }
 
-    public double getCleaningWidth() {
-        return cleaningWidth;
-    }
-
-    public void setCleaningWidth(double cleaningWidth) {
-        this.cleaningWidth = cleaningWidth;
-    }
 
     @Override
     public String toString() {
         return "VacuumCleaner{" +
-                "powerConsumption=" + powerConsumption +
-                ", filterType='" + filterType + '\'' +
-                ", bagType='" + bagType + '\'' +
-                ", wandType='" + wandType + '\'' +
-                ", motorSpeedRegulation=" + motorSpeedRegulation +
-                ", cleaningWidth=" + cleaningWidth +
+                "сonsumption=" + consumption +
+                ", filter='" + filter + '\'' +
+                ", firm='" + firm + '\'' +
+                ", power=" + power +
+                ", weight=" + weight +
                 ", price=" + getPrice() +
                 '}';
     }

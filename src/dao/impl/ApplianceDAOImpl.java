@@ -16,15 +16,15 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 public class ApplianceDAOImpl implements ApplianceDAO {
-    private static final String DBPath = "F:\\vt\\VT_2\\VT_2\\resources\\appliances.xml";
+    private static final String DBPath = "resources\\appliances.xml";
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public List<Appliance> find(Criteria criteria) throws ParserConfigurationException, IOException, SAXException {
+    public List<Appliance> findAppliance(Criteria criteria) throws ParserConfigurationException, IOException, SAXException {
         Document document = getDocument();
-        return getResultAppliances(document.getElementsByTagName(criteria.getGroupSearchName()), criteria);
+        return getResultAppliances(document.getElementsByTagName(criteria.getCategory()), criteria);
     }
 
     private Document getDocument() throws ParserConfigurationException, IOException, SAXException {
@@ -67,8 +67,8 @@ public class ApplianceDAOImpl implements ApplianceDAO {
             return new Laptop(fields);
         } else if (node.getNodeName().equals(Refrigerator.class.getSimpleName())) {
             return new Refrigerator(fields);
-        } else if (node.getNodeName().equals(TabletPC.class.getSimpleName())) {
-            return new TabletPC(fields);
+        } else if (node.getNodeName().equals(Tablet.class.getSimpleName())) {
+            return new Tablet(fields);
         } else if (node.getNodeName().equals(Speakers.class.getSimpleName())) {
             return new Speakers(fields);
         } else {
